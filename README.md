@@ -12,9 +12,11 @@ A compact, touch-first physics authoring sandbox with a 3D viewport, large touch
 ## Collision authoring goals
 1. **Paint mask:** paint/erase collision coverage like weight or texture painting.
 2. **Multi-face selection:** select multiple faces, add/remove faces, and preview the region.
-3. **Apply:** validate the authored region and create a derived collider attached to the source object, without destroying the source mesh. The initial UI will record collider recipes; true collider mesh baking is a separate implementation milestone.
+3. **Apply:** selected/painted faces now produce a Rapier box collider from their local-space bounds (an approximation, not a tight triangle-mesh bake). The source mesh remains separate.
+4. **Per-box tuning:** each applied box has friction, restitution, damping, and impulse-strength controls. Friction/restitution apply to each Rapier collider; damping and the current impulse test are body-level settings, so combined boxes currently share the strongest configured value.
 
 ## Physics roadmap
+- Armature-aware collision attachment: preserve colliders in mesh/bind-local space and keep them independent of bone deformation; actual rigged-model import and bone editing are not implemented in the current cube demo.
 - Rigid bodies, joints, contact events, collision layers and sensors via Rapier
 - Interaction and impulse tests for punching/contact response
 - Jiggle and secondary-motion constraints
