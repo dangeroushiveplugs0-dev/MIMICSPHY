@@ -27,7 +27,7 @@ A compact, touch-first physics authoring sandbox with a 3D viewport, large touch
 Rapier + WASM is the first rigid-body backend; Three.js handles rendering and face picking. Keep UI, collision data and simulation backends modular. Mojo and Verse are optional research/tooling candidates, not required browser runtime dependencies. “AMD FEM” needs a verified upstream project/specification before integration, so an adapter seam is reserved instead of claiming unsupported integration.
 
 ## Android testing
-The CI workflow creates a debug APK using Capacitor and Android Gradle (Android API 35 / build-tools 35.0.0). Download the `spenclmx-android-debug-apk` artifact from a successful Actions run, install it on a test device, and verify touch controls, Rapier WASM initialization, gravity, and collision stability. This is a debug build, not a signed release APK.
+The CI workflow creates a debug APK using Capacitor and Android Gradle (Android SDK preinstalled on the hosted runner). Download the `spenclmx-android-debug-apk` artifact from a successful Actions run, install it on a test device, and verify touch controls, Rapier WASM initialization, gravity, and collision stability. This is a debug build, not a signed release APK.
 
 ## Run
 ```sh
