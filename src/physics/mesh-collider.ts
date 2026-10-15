@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import RAPIER from '@dimforge/rapier3d-compat';
 
 /** Bake authored triangle faces into mesh-local collider buffers without replacing them with a bounding box. */
-export function bakeTriangleRegion(position: THREE.BufferAttribute, faceIndices: readonly number[]) {
+export function bakeTriangleRegion(position: THREE.BufferAttribute | THREE.InterleavedBufferAttribute, faceIndices: readonly number[]) {
   const vertices: number[] = [];
   const indices: number[] = [];
   for (const face of [...new Set(faceIndices)].sort((a, b) => a - b)) {
