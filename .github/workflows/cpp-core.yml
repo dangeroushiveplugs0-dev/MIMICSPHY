@@ -1,0 +1,20 @@
+name: C++ Core CI
+on:
+  push:
+    paths: ["engine/**", "docs/**", ".github/workflows/cpp-core.yml", "README.md"]
+  pull_request:
+    paths: ["engine/**", "docs/**", ".github/workflows/cpp-core.yml", "README.md"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S engine -B build -DSPENCLMX_BUILD_TESTS=ON
+      - name: Build
+        run: cmake --build build --parallel 2
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
